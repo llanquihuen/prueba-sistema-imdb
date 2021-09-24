@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg mb-5 navbar-dark bg-dark"
+		style="color: #eee">
+		<div class="container-fluid">
+			<div>TV Shows</div>
+			<div class="collapse d-flex justify-content-end"
+				style="margin-right: 200px" id="navbarNavAltMarkup">
+			</div>
+				<div class="navbar-nav d-flex flex-row">
+					<a class="nav-link me-5" href="/new">Add a show</a> 
+					<a class="nav-link me-5" href="/logout">Log out</a>
+				</div>		
+		</div>
+	</nav>
+	<div class="container">
+		<h1 th:text="${showId.getShowTitle}"></h1>
+		<h2 th:text="${showId.getShowNetwork}"></h2>
+		<h3>Users who rated this show</h3>
+		<table class="table table-dark table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Show</th>
+					<th scope="col">Rating</th>
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="ratings: ${ratingList}">
+				<td th:text="${ratings.getIdUsuario.getEmail}">	 </td>
+				<td th:text="${ratings.getRatings}"></td>				 
+				</tr>
+			
+			</tbody>
+		</table>
+		<form th:action="@{/makeRating}" method="post" th:object="${Rating}">
+			<div th:if=${laId}>
+			<p style="color:#777">This show is already ranked, but you can still edit it.<p>
+			<input class="form-control d-none " type="text" th:value="${laId}" id="id" name="id" >
+			</div>
+			<input class="form-control d-none" type="text" th:value="${userId.getId}" id="idUsuario" name="idUsuario">
+			<input class="form-control d-none" type="text" th:value="${showId.getId}" id="idPelicula" name="idPelicula">
+			<div class="d-flex gap-5">
+			<select style="width:150px" required class="form-select" aria-label="Default select example" name="ratings">
+				<option value="0" th:text="${laId}?'Edit rating':'Leave a rating'"></option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>			
+			<button type="submit" th:class="${laId}? 'btn btn-success mt-3':'btn btn-primary mt-3'" th:text="${laId}?Edit:Rate"></button>
+			</div>
+		</form>
+		<a class="btn btn-secondary mt-5" href="/home">Go back</a>
+	</div>
+</body>
+</html>

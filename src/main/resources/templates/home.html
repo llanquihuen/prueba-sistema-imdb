@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+</head>
+<style>
+.losShows {
+  color: #5bf;
+}
+.losShows:hover {
+  color: #8ef;
+}
+</style>
+<body>
+	<nav class="navbar navbar-expand-lg mb-5 navbar-dark bg-dark"
+		style="color: #eee">
+		<div class="container-fluid">
+			<div>TV Shows</div>
+			<div class="collapse d-flex justify-content-end"
+				style="margin-right: 200px" id="navbarNavAltMarkup">
+			</div>
+				<div class="navbar-nav d-flex flex-row">
+					<a class="nav-link me-5" href="/new">Add a show</a> 
+					<a class="nav-link me-5" href="/logout">Log out</a>
+				</div>			
+		</div>
+	</nav>
+	<div class="container">
+	<h1>
+		Welcome, <span th:text=${idUsuario}></span>
+	</h1>
+		<h4 class="mt-4">TV shows</h4>
+	<table class="table table-dark table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Show <span style="font-size:12px;margin-left:10px;color:#ccc">(Change Rating)</span></th>
+				<th scope="col">Network</th>
+				<th scope="col">Edit</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="show: ${listaShows}">
+				<td style="font-weight:bold;text-decoration:underline;font-size:18px"><a class="losShows" th:href="@{/show/(id=${show.getId})}" th:text="${show.getShowTitle}"></a></td>
+				<td th:text="${show.getShowNetwork}" />
+				<td> <a style="padding-left:0" class="nav-link losShows" th:href="@{/editar/(id=${show.getId})}">Edit show</a>  </td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div style="background:#ddd;width:300px" th:if="${userRole=='[ADMIN]'}">
+	<p><a class="ms-5 my-3" href="/api/v1/users">API users (solo admin)</a></p>
+	<p>	<a class="ms-5" href="/api/v1/shows">API shows (solo admin)</a></p>
+	</div>
+		<div th:if="${userRole=='[USER]'}">
+	<p class="ms-5 my-3" style="color:#888">API users (solo admin)</p>
+		<p class="ms-5" style="color:#888">API shows (solo admin)</p>
+	</div>
+	
+</body>
+</html>

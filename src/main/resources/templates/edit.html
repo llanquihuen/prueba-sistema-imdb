@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+
+<title>Registrar Usuario</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg mb-5 navbar-dark bg-dark"
+		style="color: #eee">
+		<div class="container-fluid">
+			<div>TV Shows</div>
+			<div class="collapse d-flex justify-content-end"
+				style="margin-right: 200px" id="navbarNavAltMarkup">
+			</div>
+				<div class="navbar-nav d-flex flex-row">
+					<a class="nav-link me-5" href="/new">Add a show</a> 
+					<a class="nav-link me-5" href="/logout">Log out</a>
+				</div>				
+		</div>
+	</nav>
+	<div class="container row mt-5">
+		<div class="col-sm-2"></div>
+		​ ​
+		<div class="col-sm-8">
+			<h3 th:text=${showId.getShowTitle}></h3>
+			<form th:action="@{/update}" method="post" th:object="${Show}">
+				<div class="form-group row mb-3 mt-5">
+					<label for="inicio" class="col-4">Show title:</label>
+					<input class="form-control d-none" th:value="${showId.getId}" type="text" id="title"
+							name="id">
+					<div class="col-8">
+						<input class="form-control" th:value="${showId.getShowTitle}" type="text" id="title"
+							name="showTitle">
+					</div>
+				</div>
+				<div class="form-group row mb-3">
+					<label for="duracion" class="col-4">Network</label>
+					<div class="col-8">
+						<input class="form-control" th:value="${showId.getShowNetwork}" type="text" value="" id="network"
+							name="showNetwork">
+					</div>
+				</div>
+
+				<div class="form-group row mb-3">
+					<div class="col-sm-12 d-flex justify-content-center">
+						<button type="submit" class="btn btn-primary">Update</button>
+					</div>
+				</div>
+			</form>
+			<a class="btn btn-danger mt-3" th:href="@{/delete/(id=${showId.getId})}">Delete</a>
+			<br>
+			<a class="btn btn-secondary mt-5" href="/home">Go Back</a>
+		</div>
+		<div class="col-sm-2">
+		</div>
+	</div>
+</body>
+</html>

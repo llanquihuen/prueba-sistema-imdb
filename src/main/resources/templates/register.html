@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+
+<title>Registrar Usuario</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg mb-5 navbar-dark bg-dark"
+		style="color:#eee">
+		<div class="container-fluid">
+		<div>TV Shows</div>
+			<div class="collapse navbar-collapse d-flex justify-content-start"
+				style="margin-right: 200px" id="navbarNavAltMarkup">
+				<div class="navbar-nav mx-5">
+					<a class="nav-link" href="/">Login</a>
+				
+					<a class="nav-link active" href="/nuevo">Registrar</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container row mt-5">
+		<div class="col-sm-2"></div>
+		​ ​
+		<div class="col-sm-8">
+			<h3>Registrar</h3>
+			<form th:action="@{/register}" method="post" th:object="${User}">
+				<div class="form-group row mb-3 mt-5">
+					<label for="inicio" class="col-4">Usuario</label>
+					<div class="col-8">
+						<input class="form-control" type="text" id="username"
+							name="username">
+					</div>
+				</div>
+				<div class="form-group row mb-3">
+					<label for="duracion" class="col-4">E-mail</label>
+					<div class="col-8">
+						<input class="form-control" type="email" value="" id="email"
+							name="email">
+					</div>
+				</div>
+
+				<div class="form-group row mb-3">
+					<label for="duracion" class="col-4">Password</label>
+					<div class="col-8">
+						<input class="form-control" type="password" value="" id="password"
+							name="password">
+					</div>
+				</div>
+				<div class="form-group row mb-3">
+					<label for="duracion" class="col-4">Confirmacion de
+						Password</label>
+					<div class="col-8">
+						<input class="form-control" type="password" value="" id="password"
+							name="passwordConfirmation">
+					</div>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio"
+						name="role" id="admin" value="ADMIN"> <label
+						class="form-check-label" for="admin"> Administrador </label>
+				</div>
+				<div class="form-check">
+					<input class="form-check-input" type="radio"
+						name="role" id="user" value="USER" checked> <label
+						class="form-check-label" for="user"> Usuario </label>
+				</div>
+
+				<div class="form-group row mb-3">
+					<div class="col-sm-12">
+						<button type="submit" class="btn btn-primary">Agregar</button>
+					</div>
+				</div>
+			</form>
+						<div align="center" th:if="${errorPass}">
+						<p style="font-size: 20; color: #FF1C19;" th:text="${errorPass}"></p>
+					</div>
+					<div align="center" th:if="${errorMail}">
+						<p style="font-size: 20; color: #FF1C19;" th:text="${errorMail}"></p>
+					</div>
+		</div>
+		<div class="col-sm-2">
+			<p></p>
+		</div>
+	</div>
+</body>
+</html>
