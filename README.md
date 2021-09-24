@@ -18,4 +18,15 @@
 - JPA
 
 
+### Pagina de prueba
+https://prueba-sistema-imdb.herokuapp.com/
+
+ADMIN<br>
+mail: `admin@admin.com` <br>
+pass: admin<br>
+
+USER<br>
+mail: `user@user.user`<br>
+pass: user<br>
+
 
