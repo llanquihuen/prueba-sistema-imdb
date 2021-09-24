@@ -21,12 +21,12 @@
 ### Pagina de prueba
 https://prueba-sistema-imdb.herokuapp.com/
 
-ADMIN
-mail: admin@admin.com 
-pass: admin
+ADMIN<br>
+mail: `admin@admin.com` <br>
+pass: admin<br>
 
-USER
-mail: user@user.user
-pass: user
+USER<br>
+mail: `user@user.user`<br>
+pass: user<br>
 
 
