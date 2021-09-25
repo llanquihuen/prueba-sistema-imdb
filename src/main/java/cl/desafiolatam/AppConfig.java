@@ -10,20 +10,20 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-//@Configuration
-//@ComponentScan("cl.desafiolatam")
-//@PropertySource("classpath:database.properties")
-//public class AppConfig {
-////	@Autowired	
-////	Environment environment;
-////	
-////	@Bean
-////	DataSource dataSource() {
-////		DriverManagerDataSource driverManager = new DriverManagerDataSource();
-////		driverManager.setUrl(environment.getProperty("url"));
-////		driverManager.setUsername(environment.getProperty("dbuser"));
-////		driverManager.setPassword(environment.getProperty("dbpassword"));
-////		driverManager.setDriverClassName(environment.getProperty("driver"));
-////		return driverManager;
-////	}
-//}
+@Configuration
+@ComponentScan("cl.desafiolatam")
+@PropertySource("classpath:database.properties")
+public class AppConfig {
+	@Autowired	
+	Environment environment;
+	
+	@Bean
+	DataSource dataSource() {
+		DriverManagerDataSource driverManager = new DriverManagerDataSource();
+		driverManager.setUrl(environment.getProperty("url"));
+		driverManager.setUsername(environment.getProperty("dbuser"));
+		driverManager.setPassword(environment.getProperty("dbpassword"));
+		driverManager.setDriverClassName(environment.getProperty("driver"));
+		return driverManager;
+	}
+}
