@@ -1,7 +1,7 @@
 ## Prueba modulo 5 Bootcamp Fullstack Java (Spring Boot)
 
 - Pagina para registrarse como Admin o User. 
-<br>(Da error si es que el password no coincide o si el usuario ya existe anteriormente)
+<br>(Da error si es que el password no coincide o si el mail del usuario ya existe anteriormente)
 
 - Pagina para logearse.
 
