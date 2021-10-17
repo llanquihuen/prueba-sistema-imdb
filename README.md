@@ -9,7 +9,7 @@
 
 - Pagina para var una lista de Peliculas.<br>(Ordenada alfabeticamente)
 
-- En las paginas individuales de las peliculas, se puede ver los puntajes de las peluculas, y los usuarios que la puntuaron, en esta misma se puede dejar una nueva puntuacion, o editar la puntuación ya hecha.
+- En las paginas individuales de las peliculas, se puede ver los puntajes de las peliculas, y los usuarios que la puntuaron, en esta misma se puede dejar una nueva puntuacion, o editar la puntuación ya hecha.
 
 ### Dependencias usadas
 - Thymeleaf
